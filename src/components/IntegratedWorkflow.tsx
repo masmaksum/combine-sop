@@ -11,13 +11,19 @@ const connections = [
   { from: "PPKS", to: "SDM", label: "Sanksi pekerja, PHK karena kasus PPKS", color: "text-coral" },
   { from: "Keuangan", to: "Penggalangan Dana", label: "Laporan keuangan untuk donor & proposal baru", color: "text-amber" },
   { from: "SDM", to: "PPKS", label: "Background check rekrutmen, Pakta Integritas", color: "text-teal" },
+  { from: "Pengadaan", to: "Keuangan", label: "Pembayaran vendor, negosiasi harga, bukti potong pajak", color: "text-sop-blue" },
+  { from: "Perjalanan Dinas", to: "Keuangan", label: "Uang muka, PJUM, pencairan & pertanggungjawaban", color: "text-sop-purple" },
+  { from: "Pengadaan", to: "SDM", label: "SPK jasa konsultan, data penyedia jasa (NPWP, KTP)", color: "text-sop-blue" },
+  { from: "Perjalanan Dinas", to: "Pengadaan", label: "Pengadaan tiket, akomodasi, transport via PJ Pengadaan", color: "text-sop-purple" },
 ];
 
 const actorFlows = [
-  { actor: "Direktur", flows: ["Persetujuan RAB (Keuangan)", "Pengangkatan pekerja (SDM)", "Persetujuan proposal (PD)", "Approver internet banking"] },
-  { actor: "Manajer Keuangan", flows: ["Verifikasi PAR", "Negosiasi upah (SDM)", "Proyeksi 3 tahun (PD)", "Pencatatan dana hibah"] },
+  { actor: "Direktur", flows: ["Persetujuan RAB (Keuangan)", "Pengangkatan pekerja (SDM)", "Persetujuan proposal (PD)", "Approver internet banking", "Persetujuan perjalanan dinas"] },
+  { actor: "Manajer Keuangan", flows: ["Verifikasi PAR", "Negosiasi upah (SDM)", "Proyeksi 3 tahun (PD)", "Pencatatan dana hibah", "Persetujuan PJUM perjalanan"] },
   { actor: "Pelaksana SDM", flows: ["Rekrutmen (SDM)", "Background check PPKS", "Induksi pekerja baru (SDM)"] },
   { actor: "Focal Point", flows: ["Terima aduan PPKS", "Eskalasi ke Dewan", "Koordinasi pencegahan"] },
+  { actor: "PJ Pengadaan", flows: ["Verifikasi SPP barang", "Proses bidding/tender", "Penerimaan & data aset", "Arsip SPK jasa"] },
+  { actor: "Pelaku Perjalanan", flows: ["Pengajuan perjalanan dinas", "Penyusunan PJUM", "Upload ke Pusdok"] },
 ];
 
 export default function IntegratedWorkflow() {

@@ -12,6 +12,8 @@ const colorMap: Record<string, { bg: string; text: string; border: string }> = {
   coral: { bg: "bg-coral-light", text: "text-coral", border: "border-coral-mid" },
   emerald: { bg: "bg-primary/10", text: "text-primary", border: "border-primary/20" },
   "update-orange": { bg: "bg-amber-light", text: "text-amber", border: "border-amber-mid" },
+  "sop-blue": { bg: "bg-sop-blue-light", text: "text-sop-blue", border: "border-sop-blue-mid" },
+  "sop-purple": { bg: "bg-sop-purple-light", text: "text-sop-purple", border: "border-sop-purple-mid" },
 };
 
 export default function SOPSummaryCards({ onSelectSOP }: SOPSummaryCardsProps) {
@@ -20,7 +22,7 @@ export default function SOPSummaryCards({ onSelectSOP }: SOPSummaryCardsProps) {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="mb-10">
           <div className="section-label mb-3">Ringkasan SOP</div>
-          <h2 className="text-2xl font-bold">5 Modul Workflow Aktif</h2>
+          <h2 className="text-2xl font-bold">{sopModules.length} Modul Workflow Aktif</h2>
           <p className="text-muted-foreground mt-1">Klik kartu untuk melihat detail workflow masing-masing SOP</p>
         </div>
 

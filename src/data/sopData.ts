@@ -250,15 +250,105 @@ export const sopModules: SOPModule[] = [
       },
     ],
   },
+  {
+    id: "pengadaan",
+    name: "SOP Pengadaan & Pengelolaan Barang/Jasa",
+    shortName: "Pengadaan",
+    year: "2021",
+    description: "Tata kelola pengadaan barang dan jasa, inventarisasi aset, perbaikan, peminjaman, serta penghapusan/lelang aset lembaga",
+    color: "sop-blue",
+    icon: "📦",
+    processCount: 7,
+    keyActors: ["PJ Pengadaan (Adm & Logistik)", "PJ Anggaran (Keuangan)", "Supervisor", "Pengguna/Staf", "Vendor"],
+    objective: "Mengatur proses pengadaan barang/jasa yang transparan, akuntabel, dan sesuai regulasi lembaga, serta pengelolaan aset dari pendataan hingga penghapusan.",
+    documents: ["SPP (Surat Permohonan Pengadaan)", "KAK (Kerangka Acuan Kegiatan)", "SPK Jasa", "Purchase Order (PO)", "BAP (Berita Acara Pembelian)", "Surat Penawaran Harga", "Berita Acara Penerimaan"],
+    categories: ["Pengadaan Barang", "Pengadaan Jasa", "Inventarisasi", "Perbaikan & Perawatan", "Peminjaman", "Penghapusan & Lelang"],
+    workflows: [
+      {
+        title: "Alur Pengadaan Barang",
+        description: "Proses pengadaan barang dari permohonan hingga penerimaan",
+        steps: [
+          { number: "01", title: "Buat Surat Permohonan Pengadaan (SPP)", actor: "Pengguna/Staf", description: "Tulis rincian: spesifikasi, jumlah, perkiraan harga, usulan vendor", input: "Kebutuhan barang", output: "SPP lengkap", nodeType: "doc" },
+          { number: "02", title: "Persetujuan SPP oleh Supervisor", actor: "Supervisor", description: "Review dan setujui SPP dari pengguna barang", input: "SPP", output: "SPP disetujui", nodeType: "approve", isApproval: true },
+          { number: "03", title: "Cek Dokumen SPP", actor: "PJ Pengadaan", description: "Pastikan SPP sudah mendapat persetujuan Supervisor, cek kelengkapan", input: "SPP disetujui", output: "SPP terverifikasi", nodeType: "action" },
+          { number: "04", title: "Cek Nilai Pengadaan", actor: "PJ Pengadaan", description: "Tentukan metode: <Rp5jt = Langsung, Rp5-30jt = Bidding (min. 3 vendor), >Rp30jt = Tender (min. 2 vendor)", input: "SPP terverifikasi", output: "Metode pengadaan ditentukan", nodeType: "decision", isDecision: true },
+          { number: "05", title: "Serahkan Dokumen ke PJ Anggaran", actor: "PJ Pengadaan", description: "SPP + surat penawaran harga/bidding dari vendor", input: "Dokumen pengadaan", output: "Dokumen siap evaluasi", nodeType: "doc" },
+          { number: "06", title: "Evaluasi & Negosiasi Harga", actor: "PJ Anggaran (Keuangan)", description: "Cek dokumen, negosiasi ke vendor, rekomendasikan pemenang", input: "Dokumen penawaran", output: "Rekomendasi vendor", nodeType: "action" },
+          { number: "07", title: "Putuskan Penyedia & Kirim PO", actor: "PJ Pengadaan", description: "Pertimbangkan hasil negosiasi, siapkan PO & Berita Acara, kirim ke vendor terpilih", input: "Rekomendasi", output: "PO terkirim", nodeType: "approve", isApproval: true },
+          { number: "08", title: "Pembayaran ke Vendor", actor: "PJ Anggaran (Keuangan)", description: "Bayar sesuai dokumen pengajuan dari PJ Pengadaan", input: "PO & invoice", output: "Pembayaran dilakukan", nodeType: "action" },
+          { number: "09", title: "Terima & Cek Barang", actor: "PJ Pengadaan", description: "Cek spesifikasi sesuai pesanan, data barang, serahkan ke pengguna", input: "Barang dari vendor", output: "Barang terverifikasi", nodeType: "action" },
+          { number: "10", title: "Tanda Tangan Berita Acara Penerimaan", actor: "Pengguna/Staf", description: "BA dibuat rangkap 2: 1 untuk pengguna, 1 diarsip PJ Pengadaan. Barang didata dalam sistem aset", input: "Barang diterima", output: "BA ditandatangani, aset tercatat", nodeType: "end" },
+        ],
+      },
+      {
+        title: "Alur Pengadaan Jasa",
+        description: "Proses pengadaan jasa konsultansi, narasumber, fasilitator, dan jasa lainnya",
+        steps: [
+          { number: "01", title: "Susun Kerangka Acuan Kegiatan (KAK)", actor: "Pengguna Jasa/Staf", description: "Latar belakang, ruang lingkup, capaian, kualifikasi penyedia jasa", input: "Kebutuhan jasa", output: "KAK lengkap", nodeType: "doc" },
+          { number: "02", title: "Persetujuan KAK oleh Supervisor", actor: "Supervisor", description: "Review dan setujui KAK yang diajukan", input: "KAK", output: "KAK disetujui", nodeType: "approve", isApproval: true },
+          { number: "03", title: "Cek Nilai Jasa", actor: "Pengguna Jasa", description: "Tentukan jumlah vendor: <Rp10jt = min. 1 vendor (penunjukan langsung), >Rp10jt = min. 2 vendor", input: "KAK disetujui", output: "Metode ditentukan", nodeType: "decision", isDecision: true },
+          { number: "04", title: "Terima KAK & Dokumen Penawaran", actor: "PJ Pengadaan", description: "Cek kelengkapan, teruskan ke PJ Anggaran untuk perhitungan honor", input: "KAK + penawaran", output: "Dokumen terverifikasi", nodeType: "action" },
+          { number: "05", title: "Hitung & Negosiasi Honor", actor: "PJ Anggaran (Keuangan)", description: "Analisis harga, negosiasi, tentukan termin pembayaran dan pajak", input: "Dokumen jasa", output: "Honor disepakati", nodeType: "action" },
+          { number: "06", title: "Minta Kelengkapan Data Penyedia", actor: "Pengguna Jasa", description: "CV, NPWP, KTP, No. Rekening Bank penyedia jasa", input: "Kesepakatan honor", output: "Data penyedia lengkap", nodeType: "doc" },
+          { number: "07", title: "Susun & Tandatangani SPK", actor: "PJ Pengadaan + Penyedia Jasa", description: "Draf SPK berdasarkan KAK, data penyedia, hasil negosiasi. Penyedia pelajari & tandatangan", input: "Data penyedia + KAK", output: "SPK ditandatangani", nodeType: "approve", isApproval: true },
+          { number: "08", title: "Bayar Honor + Potong Pajak", actor: "PJ Anggaran (Keuangan)", description: "Terbitkan bukti potong pajak, kirim scan bukti bayar ke Pengguna Jasa", input: "SPK + invoice", output: "Pembayaran dilakukan", nodeType: "action" },
+          { number: "09", title: "Arsip SPK & Bukti Bayar", actor: "PJ Pengadaan", description: "Berkas asli ke PJ Anggaran, fotokopi diarsip PJ Pengadaan. Bukti bayar diteruskan ke penyedia jasa", input: "Dokumen selesai", output: "Arsip lengkap", nodeType: "end" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "perjalanan-dinas",
+    name: "SOP Perjalanan Dinas",
+    shortName: "Perjalanan Dinas",
+    year: "2023",
+    description: "Tata kelola perjalanan dinas dari pengajuan, pencairan uang muka, pelaksanaan, hingga pertanggungjawaban keuangan",
+    color: "sop-purple",
+    icon: "✈️",
+    processCount: 6,
+    keyActors: ["Pelaku Perjalanan", "Bagian Keuangan", "Manajer Keuangan & Adm", "Direktur", "Supervisor"],
+    objective: "Mengatur prosedur perjalanan dinas yang efisien, transparan, dan akuntabel, termasuk standar biaya berdasarkan wilayah tujuan.",
+    documents: ["KAK/Undangan Resmi", "Formulir Rencana Perjalanan", "Formulir Uang Muka", "PJUM (Pertanggungjawaban Uang Muka)", "Laporan Kegiatan", "Bukti Keuangan (tiket, boarding pass, kwitansi)"],
+    categories: ["Pengajuan", "Persetujuan", "Pencairan", "Pelaksanaan", "Pertanggungjawaban", "Arsip"],
+    workflows: [
+      {
+        title: "Fase Pengajuan Perjalanan Dinas",
+        description: "Dari diskusi rencana hingga pencairan uang muka (H-3 sebelum kegiatan)",
+        steps: [
+          { number: "01", title: "Diskusi Rencana Perjalanan", actor: "Pelaku Perjalanan", description: "Konsultasi dengan Supervisor, siapkan KAK/undangan resmi", input: "Rencana kegiatan", output: "Rencana disetujui Supervisor", nodeType: "action" },
+          { number: "02", title: "Siapkan Dokumen Pengajuan", actor: "Pelaku Perjalanan", description: "KAK/undangan, Formulir Rencana, Formulir Uang Muka + budget detail", input: "Rencana disetujui", output: "Dokumen pengajuan lengkap", nodeType: "doc" },
+          { number: "03", title: "Serahkan ke Bagian Keuangan", actor: "Pelaku Perjalanan", description: "Langsung atau via email (cc: Manajer Keuangan & Adm)", input: "Dokumen pengajuan", output: "Dokumen diterima Keuangan", nodeType: "action" },
+          { number: "04", title: "Tinjau Kelengkapan Dokumen", actor: "Bagian Keuangan", description: "Cek kesesuaian biaya dengan standar, teruskan ke Manajer", input: "Dokumen pengajuan", output: "Dokumen terverifikasi", nodeType: "action" },
+          { number: "05", title: "Peninjauan & Persetujuan Manajer", actor: "Manajer Keuangan & Adm", description: "Review kelayakan anggaran, teruskan ke Direktur", input: "Dokumen terverifikasi", output: "Rekomendasi Manajer", nodeType: "approve", isApproval: true },
+          { number: "06", title: "Persetujuan Direktur", actor: "Direktur", description: "Verifikasi dokumen, diskusi tujuan & tambahan tugas jika perlu", input: "Rekomendasi Manajer", output: "Disetujui/Ditolak", nodeType: "decision", isDecision: true },
+          { number: "07", title: "Pencairan Uang Muka", actor: "Bagian Keuangan", description: "Staf tanda tangan bukti terima uang muka", input: "Persetujuan Direktur", output: "Uang muka dicairkan", nodeType: "action" },
+          { number: "08", title: "Pelaksanaan Perjalanan", actor: "Pelaku Perjalanan", description: "Simpan semua bukti transaksi (tiket, boarding pass, kwitansi hotel, makan)", input: "Uang muka", output: "Kegiatan selesai + bukti keuangan", nodeType: "action" },
+        ],
+      },
+      {
+        title: "Fase Pertanggungjawaban Uang Muka",
+        description: "Maksimal 7 hari kerja setelah kembali dari perjalanan",
+        steps: [
+          { number: "01", title: "Susun Laporan Perjalanan", actor: "Pelaku Perjalanan", description: "Formulir PJUM + Laporan Kegiatan + Bukti Keuangan lengkap", input: "Bukti-bukti kegiatan", output: "PJUM lengkap", nodeType: "doc" },
+          { number: "02", title: "Persetujuan Supervisor", actor: "Supervisor", description: "Review dan setujui laporan perjalanan", input: "PJUM", output: "PJUM disetujui Supervisor", nodeType: "approve", isApproval: true },
+          { number: "03", title: "Serahkan ke Bagian Keuangan", actor: "Pelaku Perjalanan", description: "Via email ke Supervisor, Direktur, Manajer Keuangan, Staf Keuangan atau cetak", input: "PJUM disetujui", output: "PJUM diterima Keuangan", nodeType: "action" },
+          { number: "04", title: "Cek Kelengkapan Dokumen", actor: "Bagian Keuangan", description: "Cek durasi kegiatan, penggunaan dana, laporan keuangan, keabsahan bukti", input: "PJUM", output: "Lengkap/Tidak Lengkap", nodeType: "decision", isDecision: true },
+          { number: "05", title: "Proses Saldo Uang Muka", actor: "Bagian Keuangan", description: "Jika ada sisa → kembalikan ke kantor; jika kurang → penggantian ke staf", input: "PJUM terverifikasi", output: "Saldo diselesaikan", nodeType: "action" },
+          { number: "06", title: "Persetujuan Manajer & Direktur", actor: "Manajer Keuangan & Direktur", description: "Persetujuan akhir untuk penyelesaian proses keuangan", input: "Saldo diselesaikan", output: "PJUM disetujui final", nodeType: "approve", isApproval: true },
+          { number: "07", title: "Upload ke Pusdok & Arsip", actor: "Pelaku Perjalanan", description: "Upload laporan ke pusdok.combine.or.id, konfirmasi ke pengelolaan pengetahuan. Proses selesai", input: "PJUM final", output: "Arsip lengkap di Pusdok", nodeType: "end" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const actors: Actor[] = [
   {
     name: "Direktur",
-    sops: ["Keuangan", "SDM", "PPKS", "Penggalangan Dana"],
+    sops: ["Keuangan", "SDM", "PPKS", "Penggalangan Dana", "Perjalanan Dinas"],
     mainRole: "Pengambil keputusan strategis tertinggi di level eksekutif",
     documents: ["RAB", "SPK", "SK", "PAR ≥ Rp15 juta"],
-    decisionPoints: ["Persetujuan anggaran", "Pengangkatan/PHK pekerja", "Persetujuan proposal hibah", "Approver internet banking"],
+    decisionPoints: ["Persetujuan anggaran", "Pengangkatan/PHK pekerja", "Persetujuan proposal hibah", "Approver internet banking", "Persetujuan perjalanan dinas"],
   },
   {
     name: "Pengurus Yayasan",
@@ -276,17 +366,17 @@ export const actors: Actor[] = [
   },
   {
     name: "Manajer Keuangan",
-    sops: ["Keuangan", "SDM", "Penggalangan Dana"],
+    sops: ["Keuangan", "SDM", "Penggalangan Dana", "Perjalanan Dinas"],
     mainRole: "Pimpinan unit keuangan, pemegang token internet banking & kunci brankas",
     documents: ["RAB", "PAR", "VKM/VKK", "Laporan Keuangan", "Proyeksi 3 Tahun"],
-    decisionPoints: ["Approver 1 internet banking", "Verifikasi PAR", "Negosiasi upah pekerja baru"],
+    decisionPoints: ["Approver 1 internet banking", "Verifikasi PAR", "Negosiasi upah pekerja baru", "Persetujuan PJUM perjalanan dinas"],
   },
   {
     name: "Staf Keuangan",
-    sops: ["Keuangan"],
+    sops: ["Keuangan", "Perjalanan Dinas"],
     mainRole: "Pelaksana transaksi kas masuk/keluar, Maker 1 internet banking",
     documents: ["VKM", "VKK", "Formulir Kas Kecil"],
-    decisionPoints: ["Input transaksi SANGO"],
+    decisionPoints: ["Input transaksi SANGO", "Pencairan uang muka perjalanan"],
   },
   {
     name: "Staf Akuntansi",
@@ -304,10 +394,10 @@ export const actors: Actor[] = [
   },
   {
     name: "Supervisor / Manajer Unit",
-    sops: ["Keuangan", "SDM"],
+    sops: ["Keuangan", "SDM", "Pengadaan", "Perjalanan Dinas"],
     mainRole: "Bertanggung jawab atas disiplin dan kinerja pekerja di unitnya",
-    documents: ["Evaluasi Kinerja", "Persetujuan Cuti", "Persetujuan PAR"],
-    decisionPoints: ["Persetujuan cuti", "Evaluasi KPI", "Persetujuan pengajuan pengeluaran"],
+    documents: ["Evaluasi Kinerja", "Persetujuan Cuti", "Persetujuan PAR", "Persetujuan SPP"],
+    decisionPoints: ["Persetujuan cuti", "Evaluasi KPI", "Persetujuan pengajuan pengeluaran", "Persetujuan SPP pengadaan"],
   },
   {
     name: "Focal Point PPKS",
@@ -325,10 +415,17 @@ export const actors: Actor[] = [
   },
   {
     name: "Koordinator Administrasi & Logistik",
-    sops: ["SDM", "Keuangan"],
-    mainRole: "Mengelola administrasi umum, publikasi lowongan, logistik kantor",
-    documents: ["Iklan Lowongan", "Surat Administratif"],
-    decisionPoints: ["Publikasi lowongan kerja"],
+    sops: ["SDM", "Keuangan", "Pengadaan"],
+    mainRole: "Mengelola administrasi umum, publikasi lowongan, logistik kantor, PJ Pengadaan",
+    documents: ["Iklan Lowongan", "Surat Administratif", "SPP", "PO", "BAP"],
+    decisionPoints: ["Publikasi lowongan kerja", "Pemilihan vendor", "Verifikasi penerimaan barang"],
+  },
+  {
+    name: "PJ Anggaran (Keuangan)",
+    sops: ["Pengadaan"],
+    mainRole: "Mengelola anggaran pengadaan, evaluasi harga, pembayaran vendor",
+    documents: ["Surat Penawaran Harga", "Invoice", "Bukti Bayar", "Bukti Potong Pajak"],
+    decisionPoints: ["Evaluasi & negosiasi harga vendor", "Pembayaran vendor", "Perhitungan honor jasa"],
   },
 ];
 
@@ -416,6 +513,14 @@ export const faqItems: FAQItem[] = [
     question: "Apa batas otorisasi kritis dalam SOP Keuangan?",
     answer: "Transaksi pengeluaran ≥ Rp 15.000.000 wajib mendapat persetujuan Direktur. Di bawah batas ini, Manajer Keuangan cukup sebagai approver. Untuk kas kecil, batas per pengeluaran adalah < Rp 250.000 dengan saldo maksimal Rp 10.000.000 (metode imprest).",
   },
+  {
+    question: "Bagaimana prosedur pengadaan barang di CRI?",
+    answer: "Pengadaan barang dimulai dengan SPP (Surat Permohonan Pengadaan) yang disetujui Supervisor, lalu diproses PJ Pengadaan. Metode ditentukan berdasarkan nilai: <Rp5 juta = pembelian langsung, Rp5-30 juta = bidding (min. 3 vendor), >Rp30 juta = tender (min. 2 vendor). Setelah vendor dipilih, PO dikirim dan pembayaran dilakukan oleh PJ Anggaran.",
+  },
+  {
+    question: "Apa saja yang harus disiapkan untuk perjalanan dinas?",
+    answer: "Pengajuan minimal H-3 sebelum kegiatan. Dokumen yang diperlukan: KAK/undangan resmi, Formulir Rencana Perjalanan, Formulir Uang Muka + budget. Setelah kembali, wajib menyerahkan PJUM + Laporan Kegiatan + bukti keuangan dalam maks. 7 hari kerja. Standar biaya berbeda per wilayah (DIY, Luar Kota Jawa, Jabodetabek, Luar Jawa, Luar Negeri).",
+  },
 ];
 
 export const processTypes = [
@@ -440,4 +545,10 @@ export const allDocumentTypes = [
   "RAB",
   "Pakta Integritas",
   "Formulir Pengaduan",
+  "SPP (Surat Permohonan Pengadaan)",
+  "KAK (Kerangka Acuan Kegiatan)",
+  "Purchase Order (PO)",
+  "Berita Acara Pembelian",
+  "Formulir Rencana Perjalanan",
+  "Laporan Kegiatan",
 ];

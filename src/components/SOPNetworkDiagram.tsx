@@ -70,89 +70,115 @@ const palette = {
   ppks: { bg: "#FFF0F0", border: "#C44D4D", text: "#963636", emoji: "🛡️" },
   pd2024: { bg: "#EDF4FF", border: "#4A78B4", text: "#2C5A8C", emoji: "📋" },
   pd2025: { bg: "#F5EDFF", border: "#7B4DB8", text: "#5A3090", emoji: "🔄" },
+  pengadaan: { bg: "#EDF4FF", border: "#4A6FA5", text: "#2B5280", emoji: "📦" },
+  perjalanan: { bg: "#F3EDFF", border: "#6B4DA0", text: "#4A3080", emoji: "✈️" },
 };
 
 const initialNodes: Node[] = [
-  // Main SOP nodes
+  // Main SOP nodes - repositioned for 7 nodes
   {
     id: "keuangan",
     type: "sopNode",
-    position: { x: 400, y: 20 },
+    position: { x: 420, y: 10 },
     data: { label: "SOP Keuangan", subtitle: "2022 • Pengelolaan dana", emoji: palette.keuangan.emoji, bg: palette.keuangan.bg, border: palette.keuangan.border, textColor: palette.keuangan.text },
   },
   {
     id: "sdm",
     type: "sopNode",
-    position: { x: 50, y: 220 },
+    position: { x: 30, y: 180 },
     data: { label: "SOP SDM", subtitle: "2023 • Manajemen pekerja", emoji: palette.sdm.emoji, bg: palette.sdm.bg, border: palette.sdm.border, textColor: palette.sdm.text },
   },
   {
     id: "ppks",
     type: "sopNode",
-    position: { x: 50, y: 450 },
+    position: { x: 30, y: 420 },
     data: { label: "SOP PPKS", subtitle: "2024 • Pencegahan kekerasan", emoji: palette.ppks.emoji, bg: palette.ppks.bg, border: palette.ppks.border, textColor: palette.ppks.text },
   },
   {
     id: "pd2024",
     type: "sopNode",
-    position: { x: 720, y: 220 },
+    position: { x: 800, y: 180 },
     data: { label: "SOP PD 2024", subtitle: "Penggalangan dana", emoji: palette.pd2024.emoji, bg: palette.pd2024.bg, border: palette.pd2024.border, textColor: palette.pd2024.text },
   },
   {
     id: "pd2025",
     type: "sopNode",
-    position: { x: 720, y: 450 },
+    position: { x: 800, y: 420 },
     data: { label: "SOP PD 2025", subtitle: "Pembaruan fundraising", emoji: palette.pd2025.emoji, bg: palette.pd2025.bg, border: palette.pd2025.border, textColor: palette.pd2025.text },
   },
+  {
+    id: "pengadaan",
+    type: "sopNode",
+    position: { x: 200, y: 560 },
+    data: { label: "SOP Pengadaan", subtitle: "2021 • Barang & jasa", emoji: palette.pengadaan.emoji, bg: palette.pengadaan.bg, border: palette.pengadaan.border, textColor: palette.pengadaan.text },
+  },
+  {
+    id: "perjalanan",
+    type: "sopNode",
+    position: { x: 620, y: 560 },
+    data: { label: "SOP Perjalanan Dinas", subtitle: "2023 • Travel & PJUM", emoji: palette.perjalanan.emoji, bg: palette.perjalanan.bg, border: palette.perjalanan.border, textColor: palette.perjalanan.text },
+  },
 
-  // Process sub-nodes (shared/bridging processes)
+  // Process sub-nodes
   {
     id: "payroll",
     type: "processNode",
-    position: { x: 220, y: 100 },
+    position: { x: 220, y: 80 },
     data: { label: "Payroll & Kompensasi", bg: "#F0FDF9", border: "#86CEBC", textColor: "#1A6B52" },
   },
   {
     id: "reimbursement",
     type: "processNode",
-    position: { x: 260, y: 180 },
+    position: { x: 260, y: 160 },
     data: { label: "Reimbursement", bg: "#FFFBEB", border: "#E5C158", textColor: "#8B6914" },
   },
   {
     id: "laporan-donor",
     type: "processNode",
-    position: { x: 560, y: 120 },
+    position: { x: 620, y: 90 },
     data: { label: "Laporan ke Donor", bg: "#EEF2FF", border: "#7B9DD4", textColor: "#2C5A8C" },
   },
   {
     id: "rekrutmen-proyek",
     type: "processNode",
-    position: { x: 430, y: 300 },
+    position: { x: 480, y: 270 },
     data: { label: "Rekrutmen Staf Proyek", bg: "#F0FDF9", border: "#86CEBC", textColor: "#1A6B52" },
   },
   {
     id: "sanksi",
     type: "processNode",
-    position: { x: 50, y: 360 },
+    position: { x: 30, y: 330 },
     data: { label: "Sanksi & PHK", bg: "#FFF0F0", border: "#E08A8A", textColor: "#963636" },
   },
   {
     id: "background-check",
     type: "processNode",
-    position: { x: 200, y: 420 },
+    position: { x: 180, y: 380 },
     data: { label: "Background Check & Pakta", bg: "#F0FDF9", border: "#86CEBC", textColor: "#1A6B52" },
   },
   {
     id: "pencatatan-hibah",
     type: "processNode",
-    position: { x: 560, y: 350 },
+    position: { x: 620, y: 320 },
     data: { label: "Pencatatan Dana Hibah", bg: "#FFFBEB", border: "#E5C158", textColor: "#8B6914" },
   },
   {
     id: "proposal",
     type: "processNode",
-    position: { x: 700, y: 350 },
+    position: { x: 780, y: 320 },
     data: { label: "Proposal & MoU", bg: "#EEF2FF", border: "#7B9DD4", textColor: "#2C5A8C" },
+  },
+  {
+    id: "bayar-vendor",
+    type: "processNode",
+    position: { x: 300, y: 480 },
+    data: { label: "Pembayaran Vendor", bg: "#FFFBEB", border: "#E5C158", textColor: "#8B6914" },
+  },
+  {
+    id: "uang-muka",
+    type: "processNode",
+    position: { x: 530, y: 470 },
+    data: { label: "Uang Muka & PJUM", bg: "#F3EDFF", border: "#9B86CE", textColor: "#4A3080" },
   },
 ];
 
@@ -191,6 +217,17 @@ const initialEdges: Edge[] = [
   // PD2025 → Keuangan (via proposal)
   { id: "e-pd25-proposal", source: "pd2025", target: "proposal", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.pd2025.border }, animated: false },
   { id: "e-proposal-keu", source: "proposal", target: "keuangan", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.pd2025.border }, animated: false },
+
+  // Pengadaan → Keuangan (via pembayaran vendor)
+  { id: "e-pengadaan-bayar", source: "pengadaan", target: "bayar-vendor", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.pengadaan.border } },
+  { id: "e-bayar-keu", source: "bayar-vendor", target: "keuangan", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.pengadaan.border } },
+
+  // Perjalanan → Keuangan (via uang muka)
+  { id: "e-perjalanan-um", source: "perjalanan", target: "uang-muka", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.perjalanan.border } },
+  { id: "e-um-keu", source: "uang-muka", target: "keuangan", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.perjalanan.border } },
+
+  // Perjalanan → Pengadaan
+  { id: "e-perjalanan-pengadaan", source: "perjalanan", target: "pengadaan", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.perjalanan.border, strokeDasharray: "6 3" }, animated: false },
 ];
 
 export default function SOPNetworkDiagram() {
