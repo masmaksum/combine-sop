@@ -18,6 +18,10 @@ const navLinks = [
 export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const scrollTo = useCallback((target: string) => {
+    document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
