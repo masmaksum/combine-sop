@@ -545,4 +545,10 @@ export const allDocumentTypes = [
   "RAB",
   "Pakta Integritas",
   "Formulir Pengaduan",
+  "SPP (Surat Permohonan Pengadaan)",
+  "KAK (Kerangka Acuan Kegiatan)",
+  "Purchase Order (PO)",
+  "Berita Acara Pembelian",
+  "Formulir Rencana Perjalanan",
+  "Laporan Kegiatan",
 ];
