@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown, GitBranch } from "lucide-react";
+import { sopModules } from "@/data/sopData";
 
 export default function HeroSection() {
   return (
