@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Menu, X, LayoutGrid, List } from "lucide-react";
 
 interface CRINavbarProps {
@@ -7,12 +7,12 @@ interface CRINavbarProps {
 }
 
 const navLinks = [
-  { label: "Ringkasan", href: "#ringkasan" },
-  { label: "Semua SOP", href: "#semua-sop" },
-  { label: "Terintegrasi", href: "#terintegrasi" },
-  { label: "Aktor & Dokumen", href: "#aktor-dokumen" },
-  { label: "Pembaruan 2025", href: "#pembaruan-2025" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Ringkasan", target: "ringkasan" },
+  { label: "Semua SOP", target: "semua-sop" },
+  { label: "Terintegrasi", target: "terintegrasi" },
+  { label: "Aktor & Dokumen", target: "aktor-dokumen" },
+  { label: "Pembaruan 2025", target: "pembaruan-2025" },
+  { label: "FAQ", target: "faq" },
 ];
 
 export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps) {
