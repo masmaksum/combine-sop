@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useTheme } from "next-themes";
-import { Menu, X, LayoutGrid, List, Moon, Sun } from "lucide-react";
+import { Menu, X, LayoutGrid, List } from "lucide-react";
 
 interface CRINavbarProps {
   viewMode: "card" | "diagram";
@@ -18,7 +17,6 @@ const navLinks = [
 
 export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
 
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
@@ -50,13 +48,6 @@ export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps
 
           {/* View toggle + mobile menu */}
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
-              title={theme === "dark" ? "Mode terang" : "Mode gelap"}
-            >
-              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
 
             <div className="hidden sm:flex items-center bg-secondary rounded-lg p-0.5">
               <button
