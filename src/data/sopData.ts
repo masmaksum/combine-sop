@@ -345,10 +345,10 @@ export const sopModules: SOPModule[] = [
 export const actors: Actor[] = [
   {
     name: "Direktur",
-    sops: ["Keuangan", "SDM", "PPKS", "Penggalangan Dana"],
+    sops: ["Keuangan", "SDM", "PPKS", "Penggalangan Dana", "Perjalanan Dinas"],
     mainRole: "Pengambil keputusan strategis tertinggi di level eksekutif",
     documents: ["RAB", "SPK", "SK", "PAR ≥ Rp15 juta"],
-    decisionPoints: ["Persetujuan anggaran", "Pengangkatan/PHK pekerja", "Persetujuan proposal hibah", "Approver internet banking"],
+    decisionPoints: ["Persetujuan anggaran", "Pengangkatan/PHK pekerja", "Persetujuan proposal hibah", "Approver internet banking", "Persetujuan perjalanan dinas"],
   },
   {
     name: "Pengurus Yayasan",
@@ -366,17 +366,17 @@ export const actors: Actor[] = [
   },
   {
     name: "Manajer Keuangan",
-    sops: ["Keuangan", "SDM", "Penggalangan Dana"],
+    sops: ["Keuangan", "SDM", "Penggalangan Dana", "Perjalanan Dinas"],
     mainRole: "Pimpinan unit keuangan, pemegang token internet banking & kunci brankas",
     documents: ["RAB", "PAR", "VKM/VKK", "Laporan Keuangan", "Proyeksi 3 Tahun"],
-    decisionPoints: ["Approver 1 internet banking", "Verifikasi PAR", "Negosiasi upah pekerja baru"],
+    decisionPoints: ["Approver 1 internet banking", "Verifikasi PAR", "Negosiasi upah pekerja baru", "Persetujuan PJUM perjalanan dinas"],
   },
   {
     name: "Staf Keuangan",
-    sops: ["Keuangan"],
+    sops: ["Keuangan", "Perjalanan Dinas"],
     mainRole: "Pelaksana transaksi kas masuk/keluar, Maker 1 internet banking",
     documents: ["VKM", "VKK", "Formulir Kas Kecil"],
-    decisionPoints: ["Input transaksi SANGO"],
+    decisionPoints: ["Input transaksi SANGO", "Pencairan uang muka perjalanan"],
   },
   {
     name: "Staf Akuntansi",
@@ -394,10 +394,10 @@ export const actors: Actor[] = [
   },
   {
     name: "Supervisor / Manajer Unit",
-    sops: ["Keuangan", "SDM"],
+    sops: ["Keuangan", "SDM", "Pengadaan", "Perjalanan Dinas"],
     mainRole: "Bertanggung jawab atas disiplin dan kinerja pekerja di unitnya",
-    documents: ["Evaluasi Kinerja", "Persetujuan Cuti", "Persetujuan PAR"],
-    decisionPoints: ["Persetujuan cuti", "Evaluasi KPI", "Persetujuan pengajuan pengeluaran"],
+    documents: ["Evaluasi Kinerja", "Persetujuan Cuti", "Persetujuan PAR", "Persetujuan SPP"],
+    decisionPoints: ["Persetujuan cuti", "Evaluasi KPI", "Persetujuan pengajuan pengeluaran", "Persetujuan SPP pengadaan"],
   },
   {
     name: "Focal Point PPKS",
@@ -415,10 +415,17 @@ export const actors: Actor[] = [
   },
   {
     name: "Koordinator Administrasi & Logistik",
-    sops: ["SDM", "Keuangan"],
-    mainRole: "Mengelola administrasi umum, publikasi lowongan, logistik kantor",
-    documents: ["Iklan Lowongan", "Surat Administratif"],
-    decisionPoints: ["Publikasi lowongan kerja"],
+    sops: ["SDM", "Keuangan", "Pengadaan"],
+    mainRole: "Mengelola administrasi umum, publikasi lowongan, logistik kantor, PJ Pengadaan",
+    documents: ["Iklan Lowongan", "Surat Administratif", "SPP", "PO", "BAP"],
+    decisionPoints: ["Publikasi lowongan kerja", "Pemilihan vendor", "Verifikasi penerimaan barang"],
+  },
+  {
+    name: "PJ Anggaran (Keuangan)",
+    sops: ["Pengadaan"],
+    mainRole: "Mengelola anggaran pengadaan, evaluasi harga, pembayaran vendor",
+    documents: ["Surat Penawaran Harga", "Invoice", "Bukti Bayar", "Bukti Potong Pajak"],
+    decisionPoints: ["Evaluasi & negosiasi harga vendor", "Pembayaran vendor", "Perhitungan honor jasa"],
   },
 ];
 
