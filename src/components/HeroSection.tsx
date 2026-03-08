@@ -34,19 +34,19 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <a
-                href="#semua-sop"
+              <button
+                onClick={() => document.getElementById("semua-sop")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity"
               >
                 Jelajahi Workflow
                 <ArrowDown className="w-4 h-4" />
-              </a>
-              <a
-                href="#terintegrasi"
+              </button>
+              <button
+                onClick={() => document.getElementById("terintegrasi")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-border rounded-lg font-semibold text-sm hover:bg-secondary transition-colors"
               >
                 Lihat SOP Terintegrasi
-              </a>
+              </button>
             </div>
           </motion.div>
 

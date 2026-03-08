@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Menu, X, LayoutGrid, List } from "lucide-react";
 
 interface CRINavbarProps {
@@ -7,16 +7,20 @@ interface CRINavbarProps {
 }
 
 const navLinks = [
-  { label: "Ringkasan", href: "#ringkasan" },
-  { label: "Semua SOP", href: "#semua-sop" },
-  { label: "Terintegrasi", href: "#terintegrasi" },
-  { label: "Aktor & Dokumen", href: "#aktor-dokumen" },
-  { label: "Pembaruan 2025", href: "#pembaruan-2025" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Ringkasan", target: "ringkasan" },
+  { label: "Semua SOP", target: "semua-sop" },
+  { label: "Terintegrasi", target: "terintegrasi" },
+  { label: "Aktor & Dokumen", target: "aktor-dokumen" },
+  { label: "Pembaruan 2025", target: "pembaruan-2025" },
+  { label: "FAQ", target: "faq" },
 ];
 
 export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const scrollTo = useCallback((target: string) => {
+    document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
@@ -36,13 +40,13 @@ export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <button
+                key={link.target}
+                onClick={() => scrollTo(link.target)}
                 className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
 
@@ -87,14 +91,13 @@ export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps
         {mobileOpen && (
           <div className="lg:hidden py-3 border-t border-border animate-fade-in">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md"
-                onClick={() => setMobileOpen(false)}
+              <button
+                key={link.target}
+                className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md"
+                onClick={() => { scrollTo(link.target); setMobileOpen(false); }}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
         )}
