@@ -513,6 +513,14 @@ export const faqItems: FAQItem[] = [
     question: "Apa batas otorisasi kritis dalam SOP Keuangan?",
     answer: "Transaksi pengeluaran ≥ Rp 15.000.000 wajib mendapat persetujuan Direktur. Di bawah batas ini, Manajer Keuangan cukup sebagai approver. Untuk kas kecil, batas per pengeluaran adalah < Rp 250.000 dengan saldo maksimal Rp 10.000.000 (metode imprest).",
   },
+  {
+    question: "Bagaimana prosedur pengadaan barang di CRI?",
+    answer: "Pengadaan barang dimulai dengan SPP (Surat Permohonan Pengadaan) yang disetujui Supervisor, lalu diproses PJ Pengadaan. Metode ditentukan berdasarkan nilai: <Rp5 juta = pembelian langsung, Rp5-30 juta = bidding (min. 3 vendor), >Rp30 juta = tender (min. 2 vendor). Setelah vendor dipilih, PO dikirim dan pembayaran dilakukan oleh PJ Anggaran.",
+  },
+  {
+    question: "Apa saja yang harus disiapkan untuk perjalanan dinas?",
+    answer: "Pengajuan minimal H-3 sebelum kegiatan. Dokumen yang diperlukan: KAK/undangan resmi, Formulir Rencana Perjalanan, Formulir Uang Muka + budget. Setelah kembali, wajib menyerahkan PJUM + Laporan Kegiatan + bukti keuangan dalam maks. 7 hari kerja. Standar biaya berbeda per wilayah (DIY, Luar Kota Jawa, Jabodetabek, Luar Jawa, Luar Negeri).",
+  },
 ];
 
 export const processTypes = [
