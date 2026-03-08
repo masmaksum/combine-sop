@@ -22,7 +22,7 @@ export default function SOPSummaryCards({ onSelectSOP }: SOPSummaryCardsProps) {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="mb-10">
           <div className="section-label mb-3">Ringkasan SOP</div>
-          <h2 className="text-2xl font-bold">5 Modul Workflow Aktif</h2>
+          <h2 className="text-2xl font-bold">{sopModules.length} Modul Workflow Aktif</h2>
           <p className="text-muted-foreground mt-1">Klik kartu untuk melihat detail workflow masing-masing SOP</p>
         </div>
 
