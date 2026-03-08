@@ -69,12 +69,14 @@ export default function HeroSection() {
                   { label: "Keuangan", color: "bg-amber-light text-amber border-amber-mid" },
                   { label: "SDM", color: "bg-teal-light text-teal border-teal-mid" },
                   { label: "PPKS", color: "bg-coral-light text-coral border-coral-mid" },
-                ].map((item, i) => (
+                  { label: "Pengadaan Barang/Jasa", color: "bg-sop-blue-light text-sop-blue border-sop-blue-mid" },
+                  { label: "Perjalanan Dinas", color: "bg-sop-purple-light text-sop-purple border-sop-purple-mid" },
+                ].map((item, i, arr) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className={`px-3 py-1.5 rounded-md text-xs font-semibold border ${item.color} min-w-[160px]`}>
                       {item.label}
                     </div>
-                    {i < 3 && (
+                    {i < arr.length - 1 && (
                       <div className="flex items-center gap-1 text-muted-foreground">
                         <div className="w-8 h-px bg-border" />
                         <span className="text-[0.6rem] font-mono">terkait</span>
