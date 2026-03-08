@@ -12,6 +12,8 @@ const colorMap: Record<string, { bg: string; text: string; border: string }> = {
   coral: { bg: "bg-coral-light", text: "text-coral", border: "border-coral-mid" },
   emerald: { bg: "bg-primary/10", text: "text-primary", border: "border-primary/20" },
   "update-orange": { bg: "bg-amber-light", text: "text-amber", border: "border-amber-mid" },
+  "sop-blue": { bg: "bg-sop-blue-light", text: "text-sop-blue", border: "border-sop-blue-mid" },
+  "sop-purple": { bg: "bg-sop-purple-light", text: "text-sop-purple", border: "border-sop-purple-mid" },
 };
 
 export default function SOPSummaryCards({ onSelectSOP }: SOPSummaryCardsProps) {
