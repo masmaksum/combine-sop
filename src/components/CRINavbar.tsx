@@ -91,14 +91,13 @@ export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps
         {mobileOpen && (
           <div className="lg:hidden py-3 border-t border-border animate-fade-in">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md"
-                onClick={() => setMobileOpen(false)}
+              <button
+                key={link.target}
+                className="block w-full text-left px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md"
+                onClick={() => { scrollTo(link.target); setMobileOpen(false); }}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
         )}
