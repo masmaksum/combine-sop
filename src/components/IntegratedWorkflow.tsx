@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, GitBranch } from "lucide-react";
-
+import SOPNetworkDiagram from "./SOPNetworkDiagram";
 type ViewType = "per-sop" | "antar-sop" | "per-aktor";
 
 const connections = [
