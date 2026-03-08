@@ -90,7 +90,7 @@ export default function HeroSection() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-border">
                 <div>
-                  <div className="text-2xl font-bold text-primary">5</div>
+                  <div className="text-2xl font-bold text-primary">{sopModules.length}</div>
                   <div className="text-[0.7rem] text-muted-foreground">SOP Aktif</div>
                 </div>
                 <div>
