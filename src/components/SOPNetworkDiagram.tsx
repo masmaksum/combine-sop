@@ -217,6 +217,17 @@ const initialEdges: Edge[] = [
   // PD2025 → Keuangan (via proposal)
   { id: "e-pd25-proposal", source: "pd2025", target: "proposal", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.pd2025.border }, animated: false },
   { id: "e-proposal-keu", source: "proposal", target: "keuangan", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.pd2025.border }, animated: false },
+
+  // Pengadaan → Keuangan (via pembayaran vendor)
+  { id: "e-pengadaan-bayar", source: "pengadaan", target: "bayar-vendor", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.pengadaan.border } },
+  { id: "e-bayar-keu", source: "bayar-vendor", target: "keuangan", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.pengadaan.border } },
+
+  // Perjalanan → Keuangan (via uang muka)
+  { id: "e-perjalanan-um", source: "perjalanan", target: "uang-muka", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.perjalanan.border } },
+  { id: "e-um-keu", source: "uang-muka", target: "keuangan", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.perjalanan.border } },
+
+  // Perjalanan → Pengadaan
+  { id: "e-perjalanan-pengadaan", source: "perjalanan", target: "pengadaan", ...edgeDefaults, style: { ...edgeDefaults.style, stroke: palette.perjalanan.border, strokeDasharray: "6 3" }, animated: false },
 ];
 
 export default function SOPNetworkDiagram() {
