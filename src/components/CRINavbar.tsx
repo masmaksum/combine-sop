@@ -17,7 +17,6 @@ const navLinks = [
 
 export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
 
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
