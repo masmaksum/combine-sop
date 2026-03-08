@@ -106,31 +106,14 @@ export default function IntegratedWorkflow() {
           </div>
         )}
 
-        {/* Network diagram placeholder */}
-        <div className="mt-8 bg-card rounded-xl border border-border p-6">
+        {/* Interactive Network Diagram */}
+        <div className="mt-8">
           <div className="font-mono text-[0.6rem] text-muted-foreground uppercase tracking-widest mb-4">
-            Peta Relasi Visual
+            Peta Relasi Visual — Drag & zoom untuk eksplorasi
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-6 py-8">
-            {[
-              { name: "Keuangan", emoji: "💰", color: "border-amber" },
-              { name: "SDM", emoji: "👥", color: "border-teal" },
-              { name: "PPKS", emoji: "🛡️", color: "border-coral" },
-              { name: "PD 2024", emoji: "📋", color: "border-primary" },
-              { name: "PD 2025", emoji: "🔄", color: "border-amber" },
-            ].map((node, i) => (
-              <motion.div
-                key={node.name}
-                whileHover={{ scale: 1.05 }}
-                className={`w-28 h-28 rounded-xl border-2 ${node.color} bg-card flex flex-col items-center justify-center gap-2 shadow-sm cursor-pointer`}
-              >
-                <span className="text-2xl">{node.emoji}</span>
-                <span className="text-xs font-bold text-center leading-tight">{node.name}</span>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center text-xs text-muted-foreground">
-            Hover pada node untuk melihat koneksi • Semua SOP saling terhubung melalui proses dan aktor yang sama
+          <SOPNetworkDiagram />
+          <div className="text-center text-xs text-muted-foreground mt-3">
+            Drag node untuk mengatur posisi • Scroll untuk zoom • Semua SOP saling terhubung melalui proses dan aktor yang sama
           </div>
         </div>
       </div>
