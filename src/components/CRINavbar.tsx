@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useTheme } from "next-themes";
-import { Menu, X, LayoutGrid, List, Moon, Sun } from "lucide-react";
+import { Menu, X, LayoutGrid, List } from "lucide-react";
 
 interface CRINavbarProps {
   viewMode: "card" | "diagram";
