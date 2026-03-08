@@ -40,13 +40,13 @@ export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <button
+                key={link.target}
+                onClick={() => scrollTo(link.target)}
                 className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </div>
 
