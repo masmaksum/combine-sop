@@ -50,6 +50,14 @@ export default function CRINavbar({ viewMode, onViewModeChange }: CRINavbarProps
 
           {/* View toggle + mobile menu */}
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+              title={theme === "dark" ? "Mode terang" : "Mode gelap"}
+            >
+              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
             <div className="hidden sm:flex items-center bg-secondary rounded-lg p-0.5">
               <button
                 onClick={() => onViewModeChange("card")}
