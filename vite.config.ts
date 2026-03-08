@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === "main" ? "/combine-sop/" : "/",
+  base: mode === "production" ? "/combine-sop/" : "/",
   server: {
     host: "::",
     port: 8080,
